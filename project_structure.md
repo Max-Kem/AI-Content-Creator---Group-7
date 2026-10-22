@@ -1,10 +1,10 @@
-# Project Structure – AMBOSS Content Creator
+# Project Structure – AMBOSS AI Content Creator
 
 ## 1. Project Identity
 
 - **Project name:** Your AMBOSS Content Creator
 - **Primary project type:** R&D
-- **Defined goal (1 sentence):** Researching the possibility of automating our company (AMBOSS) content creator, via a easy UI for marketing teams.
+- **Defined goal (1 sentence):** Researching the possibility of automating the company (AMBOSS) content creator, via an easy UI for marketing teams.
 - **Start / end:** Day 1 morning → Day 2 presentation
 - **Why this is a project (tick at least 4):**
   - [X] Defined goal
@@ -16,7 +16,7 @@
 
 ## 2. Objectives (Quality / Time / Cost)
 
-**Overall objective:** Build an AI content generator that turns our AMBOSS knowledge base into on-brand Instagram posts and newsletters about AMBOSS GPT, and prove with a side-by-side comparison that it sounds like AMBOSS and not like generic AI.
+**Overall objective:** Build an AI content generator that turns AMBOSS open data into on-brand Instagram posts and Newsletters content about AMBOSS GPT, and prove with a side-by-side comparison that it sounds like AMBOSS and not like generic AI.
 
 | Constraint | Our objective |
 |---|---|
