@@ -107,6 +107,7 @@ def generate_content_prompt(
     request: str,
     primary: str,
     secondary: str,
+    contexts: dict,
 ) -> str:
     """Build a channel-specific prompt using both knowledge-base sections."""
     normalized_channel = channel.strip().casefold()
@@ -117,8 +118,8 @@ def generate_content_prompt(
             f"{channel!r} | Suggestion: choose one of {supported_channels}."
         )
 
-    primary_context = _load_knowledge_base("primary")
-    secondary_context = _load_knowledge_base("secondary")
+    primary_context = contexts["primary"]
+    secondary_context = contexts["secondary"]
 
     return BASE_PROMPT_TEMPLATE.format(
         channel=normalized_channel,
@@ -132,6 +133,10 @@ def generate_content_prompt(
 
 
 if __name__ == "__main__":
+    test_contexts = {
+        "primary": "AMBOSS provides evidence-based medical knowledge.",
+        "secondary": "AI adoption in medical education is increasing."
+    }
     print("========== INSTAGRAM PROMPT ==========")
     print(
         generate_content_prompt(
@@ -139,6 +144,7 @@ if __name__ == "__main__":
             request="Introduce AMBOSS GPT and its links to relevant AMBOSS articles",
             primary="AMBOSS GPT",
             secondary="source links",
+            contexts=test_contexts,
         )
     )
 
@@ -149,5 +155,6 @@ if __name__ == "__main__":
             request="Explain how readers can explore AMBOSS GPT",
             primary="AMBOSS GPT",
             secondary="source links",
+            contexts=test_contexts,
         )
     )
