@@ -1,5 +1,5 @@
 
-# agents.md — AI Content Creator (Group 7)
+# agents.md — AMBOSS AI Content Creator
 
 ## Purpose
 Generate on-brand Instagram posts and newsletters about **AMBOSS GPT** in the voice of **AMBOSS**, using our two markdown knowledge bases as context, and prove the output is different from generic ChatGPT.
