@@ -60,46 +60,54 @@ with gr.Blocks(title="AMBOSS AI Content Creator") as demo:
         info="Describe the content you want the AI to generate.",
         interactive=True
     )
-    primary_keyword = gr.Textbox(
-        label="Primary Keyword",
-        placeholder="e.g., AMBOSS GPT",
-        info="Enter the main keyword to emphasize in the generated content.",
-        interactive=True
-    )
-    secondary_keyword = gr.Textbox(
-        label="Secondary Keyword",
-        placeholder="e.g., medical education",
-        info="Enter a supporting keyword to provide additional context.",
-        interactive=True
-    )
-    language = gr.Dropdown(
-        choices=["english", "german", "spanish", "french", "hindi"],
-        value="english",
-        label="Output Language",
-        info="Select the language for the generated content.",
-        interactive=True
-    )
-    strategy = gr.Dropdown(
-        choices=["brand", "industry", "hybrid"],
-        value="hybrid",
-        label="Content Strategy",
-        info="Choose how the AI should use the AMBOSS and industry knowledge bases.",
-        interactive=True
-    )
-    audience = gr.Textbox(
-        label="Target Audience",
-        placeholder="e.g., Medical students, physicians, or healthcare educators",
-        value="medical students and healthcare professionals",
-        info="Specify the audience the AI should address.",
-        interactive=True
-    )
-    tone = gr.Dropdown(
-        choices=["professional", "educational", "engaging", "empathetic"],
-        value="professional",
-        label="Tone of Voice",
-        info="Select the communication style for the generated content.",
-        interactive=True
-    )
+    
+    with gr.Row():
+        primary_keyword = gr.Textbox(
+            label="Primary Keyword",
+            placeholder="e.g., AMBOSS GPT",
+            info="Enter the main keyword to emphasize in the generated content.",
+            interactive=True
+        )
+        secondary_keyword = gr.Textbox(
+            label="Secondary Keyword",
+            placeholder="e.g., medical education",
+            info="Enter a supporting keyword to provide additional context.",
+            interactive=True
+        )
+
+    
+    with gr.Row():
+        language = gr.Dropdown(
+            choices=["english", "german", "spanish", "french", "hindi"],
+            value="english",
+            label="Output Language",
+            info="Select the language for the generated content.",
+            interactive=True
+        )
+        strategy = gr.Dropdown(
+            choices=["brand", "industry", "hybrid"],
+            value="hybrid",
+            label="Content Strategy",
+            info="Choose how the AI should use the AMBOSS and industry knowledge bases.",
+            interactive=True
+        )
+
+    with gr.Row():
+        audience = gr.Textbox(
+            label="Target Audience",
+            placeholder="e.g., Medical students, physicians, or healthcare educators",
+            value="medical students and healthcare professionals",
+            info="Specify the audience the AI should address.",
+            interactive=True
+        )
+        tone = gr.Dropdown(
+            choices=["professional", "educational", "engaging", "empathetic"],
+            value="professional",
+            label="Tone of Voice",
+            info="Select the communication style for the generated content.",
+            interactive=True
+        )
+
     generate_button = gr.Button(
         value="Generate Content",
         variant="primary"
@@ -150,4 +158,15 @@ with gr.Blocks(title="AMBOSS AI Content Creator") as demo:
 
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(
+        theme=gr.themes.Origin(
+            primary_hue="teal",
+            secondary_hue="cyan",
+            neutral_hue="slate"
+        ).set(
+            body_background_fill="#F0F4F6",
+            block_background_fill="#E5EDF0",
+            input_background_fill="#F2F6F7"
+        )
+    )
+
