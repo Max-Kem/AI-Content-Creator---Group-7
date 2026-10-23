@@ -16,7 +16,7 @@
 
 ## 2. Objectives (Quality / Time / Cost)
 
-**Overall objective:** Build an AI content generator that turns AMBOSS open data into on-brand Instagram posts and Newsletters content about AMBOSS GPT, and prove with a side-by-side comparison that it sounds like AMBOSS and not like generic AI.
+**Overall objective:** Build an AI content generator that turns AMBOSS open data into on-brand Instagram and LinkedIn posts, and Newsletters and Blog content about AMBOSS GPT, and prove with a side-by-side comparison that it sounds like AMBOSS and not like generic AI.
 
 | Constraint | Our objective |
 |---|---|
@@ -31,10 +31,10 @@
 | AMBOSS Marketing & Content Team | H | H | I | Manage closely: define content requirements, brand voice, and quality expectations. |
 | AMBOSS Management / Project Sponsor | H | H | I | Manage closely: define business goals, approve project scope, and evaluate the final product. |
 | Project Team (AI Developers) | H | H | I | Manage closely: develop, test, and deliver the AI Content Creator System. |
-| AMBOSS Medical Editorial Team | H | H | I | Manage closely: ensure medical accuracy, scientific credibility, and content reliability. |
+| AMBOSS Medical Editorial Team | L | L | IV | Manage closely: ensure medical accuracy, scientific credibility, and content reliability. |
 | AMBOSS Legal & Data Protection Team | L | H | II | Keep satisfied: ensure compliance with data protection, copyright, and applicable regulations. |
 | Regional Marketing Teams | H | L | III | Keep informed: provide feedback on localization, regional trends, and target markets. |
-| Medical Students & Healthcare Professionals | H | L | III | Keep informed: gather feedback on content relevance, clarity, and usefulness. |
+| Medical Students & Healthcare Professionals | L | L | IV | Keep informed: gather feedback on content relevance, clarity, and usefulness. |
 | Other AMBOSS Departments | L | L | IV | Monitor: communicate relevant developments and assess potential future needs. |
 
 ### Quadrant Definitions
@@ -102,7 +102,7 @@ The MVP is considered successful when:
    - 5.2 README + demo prep
    - 5.3 Day 1 / Day 2 board screenshots
 
-## 6. Risks (Exactly 3)
+## 6. Risks
 
 | Risk | P (L/M/H) | I (L/M/H) | Strategy | Concrete action |
 |---|---|---|---|---|
