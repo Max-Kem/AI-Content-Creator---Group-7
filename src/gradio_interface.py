@@ -1,3 +1,4 @@
+import os
 import gradio as gr
 from src.content_pipeline import (
     generate_draft,
@@ -167,6 +168,8 @@ if __name__ == "__main__":
             body_background_fill="#F0F4F6",
             block_background_fill="#E5EDF0",
             input_background_fill="#F2F6F7"
-        )
+        ),
+    server_name="0.0.0.0",
+    server_port=int(os.environ.get("PORT", 7860)),
     )
 
