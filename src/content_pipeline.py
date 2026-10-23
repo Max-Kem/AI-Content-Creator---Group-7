@@ -1,6 +1,6 @@
 from src.document_processor import load_pieces
 from src.knowledge_base import build_knowledge_context
-from src.prompt_templates import generate_content_prompt
+from src.prompt_templates import generate_content_prompt, generate_revision_prompt
 from src.llm_integration import generate_content
 
 def load_knowledge_context() -> dict:
@@ -21,7 +21,11 @@ def build_content_prompt(
     channel: str,
     request: str,
     primary_keyword: str,
-    secondary_keyword: str
+    secondary_keyword: str,
+    language: str = "english",
+    strategy: str = "hybrid",
+    audience: str = "medical students and healthcare professionals",
+    tone: str = "professional"
 ) -> str:
     """Build a content prompt using the AMBOSS knowledge bases."""
 
@@ -34,7 +38,11 @@ def build_content_prompt(
         request=request,
         primary=primary_keyword,
         secondary=secondary_keyword,
-        contexts=contexts
+        contexts=contexts,
+        language=language,
+        strategy=strategy,
+        audience=audience,
+        tone=tone
     )
 
     return prompt
@@ -44,16 +52,28 @@ def generate_draft(
     channel: str,
     request: str,
     primary_keyword: str,
-    secondary_keyword: str
+    secondary_keyword: str,
+    language: str = "english",
+    strategy: str = "hybrid",
+    audience: str = "medical students and healthcare professionals",
+    tone: str = "professional"
 ) -> str:
     """Generate AMBOSS content using the knowledge base and OpenAI API."""
+    if not request.strip():
+        raise ValueError(
+            "Please enter a content request before generating content."
+        )
 
     # Files 1–3: Build the prompt with knowledge base context
     prompt = build_content_prompt(
         channel=channel,
         request=request,
         primary_keyword=primary_keyword,
-        secondary_keyword=secondary_keyword
+        secondary_keyword=secondary_keyword,
+        language=language,
+        strategy=strategy,
+        audience=audience,
+        tone=tone
     )
 
     # File 4: Generate content with the LLM
@@ -70,6 +90,40 @@ def generate_draft(
     )
 
     return result
+
+def revise_draft(
+    original_prompt: str,
+    draft: str,
+    feedback: str
+) -> str:
+    """Revise an existing draft based on reviewer feedback."""
+    if not original_prompt.strip():
+        raise ValueError("Please generate content before requesting a revision.")
+
+    if not draft.strip():
+        raise ValueError("The draft cannot be empty.")
+
+    if not feedback.strip():
+        raise ValueError("Please enter reviewer feedback before requesting a revision.")
+
+    revision_prompt = generate_revision_prompt(
+        original_prompt=original_prompt,
+        draft=draft,
+        feedback=feedback
+    )
+
+    system_prompt = (
+        "You are an AI content editor for AMBOSS. "
+        "Follow the original brand guidelines and content rules. "
+        "Maintain medical accuracy and do not invent claims."
+    )
+
+    revised_content = generate_content(
+        system_prompt=system_prompt,
+        user_prompt=revision_prompt
+    )
+
+    return revised_content
 
 def save_draft(content: str, channel: str) -> str:
     """Save generated content as a Markdown file."""
@@ -96,7 +150,11 @@ def run_pipeline(
     channel: str,
     request: str,
     primary_keyword: str,
-    secondary_keyword: str
+    secondary_keyword: str,
+    language: str = "english",
+    strategy: str = "hybrid",
+    audience: str = "medical students and healthcare professionals",
+    tone: str = "professional"
 ) -> str:
     """Run the complete content generation and saving pipeline."""
 
@@ -105,7 +163,11 @@ def run_pipeline(
         channel=channel,
         request=request,
         primary_keyword=primary_keyword,
-        secondary_keyword=secondary_keyword
+        secondary_keyword=secondary_keyword,
+        language=language,
+        strategy=strategy,
+        audience=audience,
+        tone=tone
     )
 
     # Step 2: Save the generated content
